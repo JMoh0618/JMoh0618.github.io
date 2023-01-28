@@ -1,0 +1,294 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Python程序设计基础（五） | JMblog</title><meta name="keywords" content="Python"><meta name="author" content="JMoh"><meta name="copyright" content="JMoh"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="函数和代码复用函数是一段具有特定功能的、可重用的语句组, 通过函数名来表示和调用。经过定义, 一组语句等价于一个函数, 在需要使用这组语句的地方, 直接调用函数名称即可。 因此,函数的使用包括两部分:函数的定义和函数的使用 使用函数主要有两个目的:降低编程难度和增加代码复用。函数是一种功能抽象, 利用它可以将一个复杂的大问题分解成一系列简单的小问题, 采用分而治之的思想, 为每个小问题编写程序,">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python程序设计基础（五）">
+<meta property="og:url" content="http://jmoh0618.github.io/article/1232180a.html">
+<meta property="og:site_name" content="JMblog">
+<meta property="og:description" content="函数和代码复用函数是一段具有特定功能的、可重用的语句组, 通过函数名来表示和调用。经过定义, 一组语句等价于一个函数, 在需要使用这组语句的地方, 直接调用函数名称即可。 因此,函数的使用包括两部分:函数的定义和函数的使用 使用函数主要有两个目的:降低编程难度和增加代码复用。函数是一种功能抽象, 利用它可以将一个复杂的大问题分解成一系列简单的小问题, 采用分而治之的思想, 为每个小问题编写程序,">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://jmoh.oss-cn-hangzhou.aliyuncs.com/bg/bg31.jpg">
+<meta property="article:published_time" content="2023-01-27T08:46:58.000Z">
+<meta property="article:modified_time" content="2023-01-28T13:37:05.624Z">
+<meta property="article:author" content="JMoh">
+<meta property="article:tag" content="Python">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://jmoh.oss-cn-hangzhou.aliyuncs.com/bg/bg31.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://jmoh0618.github.io/article/1232180a"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":250},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Python程序设计基础（五）',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-01-28 21:37:05'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.2"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://jmoh.oss-cn-hangzhou.aliyuncs.com/bg/tx.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">31</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 文章</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fas fa-tags"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 连接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://jmoh.oss-cn-hangzhou.aliyuncs.com/bg/bg31.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">JMblog</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 文章</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fas fa-tags"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 连接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Python程序设计基础（五）</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-01-27T08:46:58.000Z" title="发表于 2023-01-27 16:46:58">2023-01-27</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-01-28T13:37:05.624Z" title="更新于 2023-01-28 21:37:05">2023-01-28</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Python/">Python</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">3.2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>10分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Python程序设计基础（五）"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="函数和代码复用"><a href="#函数和代码复用" class="headerlink" title="函数和代码复用"></a>函数和代码复用</h1><p>函数是一段具有特定功能的、可重用的语句组, 通过函数名来表示和调用。经过定义, 一组语句等价于一个函数, 在需要使用这组语句的地方, 直接调用函数名称即可。</p>
+<p>因此,函数的使用包括两部分:<strong>函数的定义和函数的使用</strong></p>
+<p>使用函数主要有两个目的:<strong>降低编程难度和增加代码复用。</strong>函数是一种功能抽象, 利用它可以将一个复杂的大问题分解成一系列简单的小问题, 采用分而治之的思想, 为每个小问题编写程序, 通过函数封装,当各个小问题都解决了, 大问题也就迎刃而解。</p>
+<p><strong>函数可以在一个程序的多个位置使用,也可以用于多个程序</strong>,当需要修改代码时, 只需要在函数中修改一次, 所有调用位置的功能都更新了, 这种代码复用降低了代码行数和代码维护难度。</p>
+<h2 id="函数的定义"><a href="#函数的定义" class="headerlink" title="函数的定义"></a>函数的定义</h2><p>Python语言通过保留字def定义函数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> &lt;函数名&gt; (&lt;参数列表&gt;) :</span><br><span class="line">	&lt;函数体&gt;</span><br><span class="line">	<span class="keyword">return</span> &lt;返回值列表&gt;</span><br></pre></td></tr></table></figure>
+
+<p>函数名可以是任何有效的 Python标识符, 参数列表是调用该函数时传递给它的值, 可以有零个、一个或多个, 当传递多个参数时各参数由逗号分隔, 当没有参数时也要保留圆括号。</p>
+<p>参数列表中的参数是形式参数, 简称为“形参”, 相当于实际参数的一种符号表示或符号占位符。</p>
+<p>函数体是函数每次被调用时执行的代码, 由一行或多行语句组成。如果需要返回值, 使用保留字return和返回值列表。函数可以没有 return语句, 函数体结束后会将控制权返回给调用者。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#定义整数n的阶乘计算函数、</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">fact</span>(<span class="params">n</span>):</span><br><span class="line">	s = <span class="number">1</span></span><br><span class="line">	<span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,n+<span class="number">1</span>):</span><br><span class="line">		s *= i</span><br><span class="line">	<span class="keyword">return</span> s</span><br></pre></td></tr></table></figure>
+
+<h2 id="函数的使用"><a href="#函数的使用" class="headerlink" title="函数的使用"></a>函数的使用</h2><p>函数的定义也叫函数“声明”, 定义后的函数不能直接运行, 需要经过“调用”才能得到运行</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;函数名&gt; (&lt;实际赋值参数列表&gt;)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#定义整数n的阶乘计算函数、</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">fact</span>(<span class="params">n</span>):</span><br><span class="line">	s = <span class="number">1</span></span><br><span class="line">	<span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,n+<span class="number">1</span>):</span><br><span class="line">		s *= i</span><br><span class="line">	<span class="keyword">return</span> s</span><br><span class="line"><span class="comment">#用户输入，并调用函数打印输出	</span></span><br><span class="line">n = <span class="built_in">eval</span>(<span class="built_in">input</span>(<span class="string">&quot;输入一个整数计算阶乘：&quot;</span>))		</span><br><span class="line"><span class="built_in">print</span>(fact(n))	</span><br></pre></td></tr></table></figure>
+
+<p><strong>函数的四个步骤：</strong></p>
+<ol>
+<li>函数定义：使用<code>def</code>保留字将一段代码定义为函数, 需要确定函数名、参数名、参数的个数, 使用参数名称作为形式参数(占位符)编写函数内部的功能代码。</li>
+<li>函数调用：通过函数名调用函数功能,对函数的各个参数赋予实际值, 实际值可以是实际数据, 也可以是在调用函数前已经定义过的变量。</li>
+<li>函数执行：函数被调用后, 使用实际参数(赋予形式参数的实际值)参与函数内部代码的运行,如果有结果则进行输出。</li>
+<li>函数返回：函数执行结束后, 根据 <code>return</code>保留字的指示决定是否返回结果, 如果返回结果, 则结果将被放置到函数被调用的位置, 函数使用完毕, 程序继续运行。</li>
+</ol>
+<p><strong>编程中大量使用函数已经成为一种编程范式, 叫作函数式编程。</strong>函数式编程的主要思想是把程序过程尽量写成一系列函数调用, 这能够使代码编写更简洁、更易于理解, 是中小规模软件项目中最常用的编程方式。</p>
+<p>注意：函数也是有类型的，以上面的阶乘计算函数为例</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="built_in">type</span>(fact))		<span class="comment">#&lt;class &#x27;function&#x27;&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>Python还有一种最小函数，不表达任何功能</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">f</span>():</span><br><span class="line">	<span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+
+<p>其中, 保留字<code>pass</code>表示不进行任何操作, 起到占位的作用, 因为函数体内部总要编写一行代码, pass用来表示这种占位。对<code>f()</code>的调用不实现任何功能。</p>
+<h2 id="函数的参数传递"><a href="#函数的参数传递" class="headerlink" title="函数的参数传递"></a>函数的参数传递</h2><h3 id="可选参数传递"><a href="#可选参数传递" class="headerlink" title="可选参数传递"></a>可选参数传递</h3><p>函数的参数在定义时可以指定默认值, <strong>当函数被调用时, 如果没有传入对应的参数值, 则使用函数定义时的默认值替代。</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> &lt;函数名&gt; (&lt;非可选参数列表&gt;,&lt;可选参数&gt; = &lt;默认值&gt;)</span><br><span class="line">	&lt;函数体&gt;</span><br><span class="line">	<span class="keyword">return</span> &lt;返回值列表&gt;</span><br></pre></td></tr></table></figure>
+
+<p>可选参数一般都放置在非可选参数的后面, 即定义函数时, 先给出所有非可选参数,然后再分别列出每个可选参数及对应的默认值。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#两数相乘函数</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">cheng</span>(<span class="params">x,y = <span class="number">10</span></span>):</span><br><span class="line">	<span class="built_in">print</span>(x*y)</span><br><span class="line">cheng(<span class="number">10</span>)		<span class="comment">#100</span></span><br><span class="line">cheng(<span class="number">10</span>,<span class="number">5</span>)		<span class="comment">#50</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="参数名称触地"><a href="#参数名称触地" class="headerlink" title="参数名称触地"></a>参数名称触地</h3><p>函数调用时,默认采用按照位置顺序的方式传递给函数，Python语言同时支持函数按照参数名称方式传递参数, </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;函数名&gt; (&lt;参数名&gt; = &lt;实际值&gt;)</span><br></pre></td></tr></table></figure>
+
+<p>采用参数名称传递方式不需要保持参数传递的顺序, 参数之间的顺序可以任意调整, 只需要对每个必要参数赋予实际值即可, 这种方式会显著增强程序的可读性。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#两数相乘函数</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">cheng</span>(<span class="params">x,y = <span class="number">10</span></span>):</span><br><span class="line">	<span class="built_in">print</span>(x*y)</span><br><span class="line">cheng(x=<span class="number">10</span>)		<span class="comment">#100</span></span><br><span class="line">cheng(x=<span class="number">10</span>,y=<span class="number">5</span>)		<span class="comment">#50</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="函数返回值"><a href="#函数返回值" class="headerlink" title="函数返回值"></a>函数返回值</h3><p><code>return</code>语句用来结束函数并将程序返回到函数被调用的位置继续执行。</p>
+<p><code>return</code>语句可以出现在函数中的任何部分, 同时可以将0个、1个或多个函数运算的结果返回给函数被调用处的变量</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">cheng</span>(<span class="params">x,y = <span class="number">10</span></span>):</span><br><span class="line">	<span class="keyword">return</span> x*y</span><br><span class="line"><span class="built_in">print</span>(cheng(<span class="number">10</span>))		<span class="comment">#100</span></span><br></pre></td></tr></table></figure>
+
+<p>函数可以没有 <code>return</code>, 此时函数并不返回值。当函数使用 <code>return</code>返回多个值时,可以使用个变量或多个变量保存结果。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">cheng</span>(<span class="params">x,y = <span class="number">10</span></span>):    </span><br><span class="line">	<span class="keyword">return</span> x*y,x+y</span><br><span class="line"><span class="built_in">print</span>(cheng(<span class="number">10</span>))       <span class="comment">#(100, 20)</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="变量作用域"><a href="#变量作用域" class="headerlink" title="变量作用域"></a>变量作用域</h2><p>根据程序中变量所在的位置和作用范围, 变量分为<strong>局部变量和全局变量。</strong></p>
+<p><strong>局部变量仅在函数内部使用, 且作用域也在函数内部。</strong></p>
+<p><strong>全局变量可以跨越函数使用, 作用域覆盖整个程序。</strong></p>
+<h3 id="局部变量"><a href="#局部变量" class="headerlink" title="局部变量"></a>局部变量</h3><p>局部变量指在函数内部定义并使用的变量, 仅在函数内部有效, 当函数退出时变量将不再存在。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">cheng</span>(<span class="params">x,y = <span class="number">10</span></span>):    </span><br><span class="line">	z = x * y</span><br><span class="line">	<span class="keyword">return</span> z</span><br><span class="line">s = cheng(<span class="number">10</span>)</span><br><span class="line"><span class="built_in">print</span>(s)	<span class="comment">#100</span></span><br><span class="line"><span class="built_in">print</span>(z)	<span class="comment">#报错</span></span><br></pre></td></tr></table></figure>
+
+<p>当 <code>cheng</code>函数调用后,变量<code>z</code>将不存在,因此再使用这个变量会报错。</p>
+<h3 id="全局变量"><a href="#全局变量" class="headerlink" title="全局变量"></a>全局变量</h3><p>全局变量指在函数之外定义的变量, 在程序执行全过程有效。</p>
+<p><strong>全局变量在函数内部使用时需要提前使用保留字<code>global</code>声明</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">global</span> &lt;全局变量&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">z = <span class="number">2</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">cheng</span>(<span class="params">x,y = <span class="number">10</span></span>):    </span><br><span class="line">	<span class="keyword">global</span> z</span><br><span class="line">	<span class="keyword">return</span>  x * y * z</span><br><span class="line">s = cheng(<span class="number">10</span>)</span><br><span class="line"><span class="built_in">print</span>(s)	<span class="comment">#100</span></span><br><span class="line"><span class="built_in">print</span>(z)	<span class="comment">#2</span></span><br></pre></td></tr></table></figure>
+
+<p>如果未使用保留字<code>global</code>声明, 即使名称相同, 也不是全局变量</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">z = <span class="number">2</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">cheng</span>(<span class="params">x,y = <span class="number">10</span></span>):    </span><br><span class="line">	z = x * y</span><br><span class="line">	<span class="keyword">return</span>  z</span><br><span class="line">s = cheng(<span class="number">10</span>)</span><br><span class="line"><span class="built_in">print</span>(s)	<span class="comment">#100</span></span><br><span class="line"><span class="built_in">print</span>(z)	<span class="comment">#2</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="代码复用"><a href="#代码复用" class="headerlink" title="代码复用"></a>代码复用</h2><p>函数是程序的一种基本抽象方式, 它将一系列代码组织起来通过命名供其他程序使用。</p>
+<p><strong>函数封装的直接好处是代码复用</strong>, 任何其他代码只要输入参数即可调用函数, 从而避免相同功能代码在被调用处重复编写。代码复用有另一个好处, 当更新函数功能时, 所有被调用处的功能都被更新。</p>
+<p>程序由一系列代码组成, 如果代码是顺序但无组织的, 不仅不利于阅读和理解, 也很难进行升级和维护。当程序长度在百行以上, 如果不划分模块, 程序的可读性就已经很糟糕了。</p>
+<p>解决这问题最好的方法是将一个程序分割成短小的程序段, 每一段程序完成一个小的且特定的功能。利用函数将程序合理划分为多个功能模块, 并基于模块设计程序是一种常用的程序设计方法, 被称为“<strong>模块化设计</strong>”。</p>
+<p><strong>模块化设计指通过函数的封装功能将程序划分成主程序、子程序和子程序间关系的表达。</strong></p>
+<p>模块化设计是使用函数设计程序的思考方法,以功能块为基本单位,一般有两个基本要求：</p>
+<ul>
+<li><strong>紧耦合：</strong>尽可能合理划分功能块,功能块内部耦合紧密;</li>
+<li><strong>松耦合：</strong>模块间关系尽可能简单,功能块之间耦合度低。</li>
+</ul>
+<p>耦合性指程序结构中各模块之间相互关联的程度, 它取决于各模块间接口的复杂程度和调用方式。</p>
+<p><strong>耦合性是影响软件复杂程度和设计质量的一个重要因素。</strong></p>
+<p>紧耦合指模块或系统间关系紧密,存在较多或复杂的相互调用。</p>
+<p>紧耦合的缺点在于更新一个模块可能导致其他模块变化,复用较困难。</p>
+<p>松耦合一般基于消息或协议实现,系统间交互简单。</p>
+<h2 id="函数递归"><a href="#函数递归" class="headerlink" title="函数递归"></a>函数递归</h2><p>函数是一种代码封装, 能够被其他程序调用, 当然, 也可以被函数自身的内部代码调用。</p>
+<p><strong>这种函数定义中调用函数自身的方式称为递归。</strong></p>
+<p>递归在数学和计算机应用上非常强大,能够非常简洁地解决重要问题</p>
+<p><strong>递归的关键特征：</strong></p>
+<ul>
+<li><strong>递归基例：</strong>存在一个或多个基例,不需要再次递归,它是确定的表达式。</li>
+<li><strong>递归链条：</strong>所有递归都有一个链条,表现为函数功能的不同值调用。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#递归计算阶乘函数</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">fact</span>(<span class="params">n</span>):</span><br><span class="line">	<span class="keyword">if</span> n == <span class="number">0</span>:</span><br><span class="line">		<span class="keyword">return</span> <span class="number">1</span> <span class="comment">#0的阶乘是1</span></span><br><span class="line">	<span class="keyword">else</span>:</span><br><span class="line">		<span class="keyword">return</span> n*fact(n-<span class="number">1</span>)</span><br><span class="line">n = <span class="built_in">eval</span>(<span class="built_in">input</span>(<span class="string">&quot;请输入一个整数计算阶乘：&quot;</span>))</span><br><span class="line"><span class="built_in">print</span>(fact(n))</span><br></pre></td></tr></table></figure>
+
+<p>每次函数调用时, 函数参数的副本会临时存储,递归中各函数再运算自己的参数, 相互没有影响。当基例结束运算并返回值时, 各函数逐层结柬运算,向调用者返回计算结果。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#递归反转字符串</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">reverse</span>(<span class="params">s</span>):</span><br><span class="line">	<span class="keyword">if</span> s == <span class="string">&quot;&quot;</span>:</span><br><span class="line">		<span class="keyword">return</span> s</span><br><span class="line">	<span class="keyword">else</span>:</span><br><span class="line">		<span class="keyword">return</span> reverse(s[<span class="number">1</span>:])+s[<span class="number">0</span>]</span><br><span class="line">s = <span class="built_in">input</span>(<span class="string">&quot;请输入一个字符串：&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(reverse(s))</span><br></pre></td></tr></table></figure>
+
+<h2 id="过程式与函数式编程"><a href="#过程式与函数式编程" class="headerlink" title="过程式与函数式编程"></a>过程式与函数式编程</h2><p>编程方法是如何思考、设计、编写程序的方法, 与编程语言的语法一样重要。</p>
+<p>过程式编程是一种以计算过程或运算流程为中心的编程方法, 也是一种十分自然、符合人类思维方式的编程方法。</p>
+<p>面对一个计算任务, 最直接的描述方式是按照操作流程或步骤进行分解并编写代码逐步实现流程或步骤所要求的计算功能。</p>
+<p>过程式编程采用这种方式, 以划分计算步骤为主要方法, 组织程序代码。Python语言通过编程语句支持过程式编程。一般来说,采用顺序、分支、循环等逻辑就可以完整描述计算过程。</p>
+<p>函数式编程方法是过程式编程的一种演进, 亦称模块式编程。</p>
+<p>函数式编程的主要思想是把程序过程尽量写成一系列函数调用, 这能够使代码编写更简洁、更易于理解。函数式编程是软件项目中最常用的编程方式,也是代码复用的主要方式</p>
+<h1 id="Python实例"><a href="#Python实例" class="headerlink" title="Python实例"></a>Python实例</h1><p><strong>软文诗词风</strong></p>
+<p>将软文的正常排版方式变为短句</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#软文诗词化</span></span><br><span class="line">txt=<span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">临江仙·滚滚长江东逝水</span></span><br><span class="line"><span class="string">明·杨慎</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">滚滚长江东逝水，浪花淘尽英雄。是非成败转头空。青山依旧在，几度夕阳红。</span></span><br><span class="line"><span class="string">白发渔樵江渚上，惯看秋月春风。一壶浊酒喜相逢。古今多少事，都付笑谈中。</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line">linewidth = <span class="number">20</span> <span class="comment">#预定的输出宽度</span></span><br><span class="line"><span class="comment">#分割软文</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">lineSplit</span>(<span class="params">line</span>):</span><br><span class="line">	<span class="comment">#辨识所有可能出现的符号</span></span><br><span class="line">	<span class="type">List</span> = [<span class="string">&#x27;,&#x27;</span>,<span class="string">&#x27;.&#x27;</span>,<span class="string">&#x27;!&#x27;</span>,<span class="string">&#x27;?&#x27;</span>,<span class="string">&#x27;，&#x27;</span>,<span class="string">&#x27;。&#x27;</span>,<span class="string">&#x27;！&#x27;</span>,<span class="string">&#x27;？&#x27;</span>]</span><br><span class="line">	<span class="keyword">for</span> p <span class="keyword">in</span> <span class="type">List</span>:</span><br><span class="line">		<span class="comment">#把符号换成换行</span></span><br><span class="line">		line = line.replace(p,<span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line">		<span class="comment">#通过换行来分割文章</span></span><br><span class="line">	<span class="keyword">return</span> line.split(<span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line"><span class="comment">#注意这时如果直接输出，会是一个列表</span></span><br><span class="line"><span class="comment">#设置排版</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">linePrint</span> (line):</span><br><span class="line">	<span class="comment">#获取全局变量-输出宽度</span></span><br><span class="line">	<span class="keyword">global</span> linewidth</span><br><span class="line">	<span class="comment">#居中显示，chr(12288)表示中文空格，用于居中填充</span></span><br><span class="line">	<span class="built_in">print</span>(line.center(linewidth,<span class="built_in">chr</span>(<span class="number">12288</span>)))</span><br><span class="line">	</span><br><span class="line">newlines = lineSplit(txt)</span><br><span class="line"><span class="keyword">for</span> line <span class="keyword">in</span> newlines:</span><br><span class="line">	linePrint(line)</span><br></pre></td></tr></table></figure>
+
+<img src="/article/1232180a/tp.png" class></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://jmoh0618.github.io">JMoh</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://jmoh0618.github.io/article/1232180a.html">http://jmoh0618.github.io/article/1232180a.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://jmoh0618.github.io" target="_blank">JMblog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Python/">Python</a></div><div class="post_share"><div class="social-share" data-image="https://jmoh.oss-cn-hangzhou.aliyuncs.com/bg/bg31.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/wechat.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/alipay.jpg" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/article/7dacdd4d.html"><img class="next-cover" src="https://jmoh.oss-cn-hangzhou.aliyuncs.com/bg/bg30.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Python程序设计基础（四）</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/article/b7898ba2.html" title="Python程序设计基础（一）"><img class="cover" src="https://jmoh.oss-cn-hangzhou.aliyuncs.com/bg/bg27.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-01-23</div><div class="title">Python程序设计基础（一）</div></div></a></div><div><a href="/article/879f677a.html" title="Python程序设计基础（二）"><img class="cover" src="https://jmoh.oss-cn-hangzhou.aliyuncs.com/bg/bg28.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-01-23</div><div class="title">Python程序设计基础（二）</div></div></a></div><div><a href="/article/ca81c428.html" title="Python程序设计基础（三）"><img class="cover" src="https://jmoh.oss-cn-hangzhou.aliyuncs.com/bg/bg29.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-01-25</div><div class="title">Python程序设计基础（三）</div></div></a></div><div><a href="/article/7dacdd4d.html" title="Python程序设计基础（四）"><img class="cover" src="https://jmoh.oss-cn-hangzhou.aliyuncs.com/bg/bg30.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-01-26</div><div class="title">Python程序设计基础（四）</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://jmoh.oss-cn-hangzhou.aliyuncs.com/bg/tx.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">JMoh</div><div class="author-info__description">分享技术，记录生活</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">31</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div><div class="card-info-social-icons is-center"><a class="social-icon" href="https://qm.qq.com/cgi-bin/qm/qr?k=F8Roaf7kUggAM9AhK9oIn4ouuXu4ECkQ&amp;noverify=0" target="_blank" title="QQ"><i class="fa-brands fa-qq"></i></a><a class="social-icon" href="https://github.com/JMoh0618" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="https://space.bilibili.com/424716389" target="_blank" title="bilibili"><i class="fa-brands fa-bilibili"></i></a><a class="social-icon" href="mailto:1611894251@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">如果在阅读过程中遇到了问题，请及时评论或者留言，看到了会在第一时间给出回复。</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E5%92%8C%E4%BB%A3%E7%A0%81%E5%A4%8D%E7%94%A8"><span class="toc-number">1.</span> <span class="toc-text">函数和代码复用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="toc-number">1.1.</span> <span class="toc-text">函数的定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">1.2.</span> <span class="toc-text">函数的使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E7%9A%84%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92"><span class="toc-number">1.3.</span> <span class="toc-text">函数的参数传递</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AF%E9%80%89%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92"><span class="toc-number">1.3.1.</span> <span class="toc-text">可选参数传递</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%82%E6%95%B0%E5%90%8D%E7%A7%B0%E8%A7%A6%E5%9C%B0"><span class="toc-number">1.3.2.</span> <span class="toc-text">参数名称触地</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E8%BF%94%E5%9B%9E%E5%80%BC"><span class="toc-number">1.3.3.</span> <span class="toc-text">函数返回值</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%98%E9%87%8F%E4%BD%9C%E7%94%A8%E5%9F%9F"><span class="toc-number">1.4.</span> <span class="toc-text">变量作用域</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B1%80%E9%83%A8%E5%8F%98%E9%87%8F"><span class="toc-number">1.4.1.</span> <span class="toc-text">局部变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F"><span class="toc-number">1.4.2.</span> <span class="toc-text">全局变量</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%A4%8D%E7%94%A8"><span class="toc-number">1.5.</span> <span class="toc-text">代码复用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E9%80%92%E5%BD%92"><span class="toc-number">1.6.</span> <span class="toc-text">函数递归</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%87%E7%A8%8B%E5%BC%8F%E4%B8%8E%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B"><span class="toc-number">1.7.</span> <span class="toc-text">过程式与函数式编程</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Python%E5%AE%9E%E4%BE%8B"><span class="toc-number">2.</span> <span class="toc-text">Python实例</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/article/1232180a.html" title="Python程序设计基础（五）"><img src="https://jmoh.oss-cn-hangzhou.aliyuncs.com/bg/bg31.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Python程序设计基础（五）"/></a><div class="content"><a class="title" href="/article/1232180a.html" title="Python程序设计基础（五）">Python程序设计基础（五）</a><time datetime="2023-01-27T08:46:58.000Z" title="发表于 2023-01-27 16:46:58">2023-01-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/article/7dacdd4d.html" title="Python程序设计基础（四）"><img src="https://jmoh.oss-cn-hangzhou.aliyuncs.com/bg/bg30.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Python程序设计基础（四）"/></a><div class="content"><a class="title" href="/article/7dacdd4d.html" title="Python程序设计基础（四）">Python程序设计基础（四）</a><time datetime="2023-01-26T08:09:01.000Z" title="发表于 2023-01-26 16:09:01">2023-01-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/article/ca81c428.html" title="Python程序设计基础（三）"><img src="https://jmoh.oss-cn-hangzhou.aliyuncs.com/bg/bg29.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Python程序设计基础（三）"/></a><div class="content"><a class="title" href="/article/ca81c428.html" title="Python程序设计基础（三）">Python程序设计基础（三）</a><time datetime="2023-01-25T06:05:01.000Z" title="发表于 2023-01-25 14:05:01">2023-01-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/article/879f677a.html" title="Python程序设计基础（二）"><img src="https://jmoh.oss-cn-hangzhou.aliyuncs.com/bg/bg28.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Python程序设计基础（二）"/></a><div class="content"><a class="title" href="/article/879f677a.html" title="Python程序设计基础（二）">Python程序设计基础（二）</a><time datetime="2023-01-23T12:40:21.000Z" title="发表于 2023-01-23 20:40:21">2023-01-23</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/article/b7898ba2.html" title="Python程序设计基础（一）"><img src="https://jmoh.oss-cn-hangzhou.aliyuncs.com/bg/bg27.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Python程序设计基础（一）"/></a><div class="content"><a class="title" href="/article/b7898ba2.html" title="Python程序设计基础（一）">Python程序设计基础（一）</a><time datetime="2023-01-23T06:36:05.000Z" title="发表于 2023-01-23 14:36:05">2023-01-23</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://jmoh.oss-cn-hangzhou.aliyuncs.com/bg/bg31.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2022 - 2023 By JMoh</div><div class="footer_custom_text">©版权说明：本网站所有内容均收集于互联网或自己创作,<br>方便于网友与自己学习交流，如有侵权，请留言，立即处理<br><a target="_blank" rel="noopener" href="https://beian.miit.gov.cn/"><span>备案号：闽ICP备2022004653号-1</span></a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">簡</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: '7CxuOccIsYPIliTamTHj1swN-gzGzoHsz',
+      appKey: 'ks5hUH5M6neA18doLX1bHrye',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/gh/HCLonely/Valine@latest/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-ribbon.min.js" size="300" alpha="0.6" zIndex="-1" mobile="false" data-click="false"></script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-show-text.min.js" data-mobile="false" data-text="I,LOVE,YOU" data-fontsize="15px" data-random="false" async="async"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
