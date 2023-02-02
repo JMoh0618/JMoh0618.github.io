@@ -1,0 +1,422 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Python程序设计基础（八） | JMblog</title><meta name="keywords" content="Python"><meta name="author" content="JMoh"><meta name="copyright" content="JMoh"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Python计算生态计算思维计算思维是人类科学思维活动的重要组成部分。人类在认识世界、改造世界的过程中表现出三种基本的思维特征： 以实验和验证为特征的实证思维, 以物理学科为代表; 以推理和演绎为特征的逻辑思维, 以数学学科为代表; 以设计和构造为特征的计算思维, 以计算机学科为代表。 计算思维的本质是抽象( Abstraction)和自动化( Automation)。 程序设计方法论分为：自顶向">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python程序设计基础（八）">
+<meta property="og:url" content="http://jmoh0618.github.io/article/52570c0f.html">
+<meta property="og:site_name" content="JMblog">
+<meta property="og:description" content="Python计算生态计算思维计算思维是人类科学思维活动的重要组成部分。人类在认识世界、改造世界的过程中表现出三种基本的思维特征： 以实验和验证为特征的实证思维, 以物理学科为代表; 以推理和演绎为特征的逻辑思维, 以数学学科为代表; 以设计和构造为特征的计算思维, 以计算机学科为代表。 计算思维的本质是抽象( Abstraction)和自动化( Automation)。 程序设计方法论分为：自顶向">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://jmoh.oss-cn-hangzhou.aliyuncs.com/bg/bg34.jpg">
+<meta property="article:published_time" content="2023-02-02T05:21:49.000Z">
+<meta property="article:modified_time" content="2023-02-02T12:45:15.804Z">
+<meta property="article:author" content="JMoh">
+<meta property="article:tag" content="Python">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://jmoh.oss-cn-hangzhou.aliyuncs.com/bg/bg34.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://jmoh0618.github.io/article/52570c0f"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":250},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Python程序设计基础（八）',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-02-02 20:45:15'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.2"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://jmoh.oss-cn-hangzhou.aliyuncs.com/bg/tx.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">34</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 文章</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fas fa-tags"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 连接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://jmoh.oss-cn-hangzhou.aliyuncs.com/bg/bg34.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">JMblog</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 文章</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fas fa-tags"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 连接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Python程序设计基础（八）</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-02-02T05:21:49.000Z" title="发表于 2023-02-02 13:21:49">2023-02-02</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-02-02T12:45:15.804Z" title="更新于 2023-02-02 20:45:15">2023-02-02</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Python/">Python</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">3.5k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>12分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Python程序设计基础（八）"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="Python计算生态"><a href="#Python计算生态" class="headerlink" title="Python计算生态"></a>Python计算生态</h1><h2 id="计算思维"><a href="#计算思维" class="headerlink" title="计算思维"></a>计算思维</h2><p>计算思维是人类科学思维活动的重要组成部分。人类在认识世界、改造世界的过程中表现出三种基本的思维特征：</p>
+<p>以实验和验证为特征的实证思维, 以物理学科为代表;</p>
+<p>以推理和演绎为特征的逻辑思维, 以数学学科为代表;</p>
+<p>以设计和构造为特征的计算思维, 以计算机学科为代表。</p>
+<p><strong>计算思维的本质是抽象( Abstraction)和自动化( Automation)。</strong></p>
+<h2 id="程序设计方法论"><a href="#程序设计方法论" class="headerlink" title="程序设计方法论"></a>程序设计方法论</h2><p>分为：<strong>自顶向下的设计方法，自底向上的执行方式</strong></p>
+<p><strong>一个解决复杂问题行之有效的方法被称作自顶向下的设计方法</strong> , 其基本思想是从一个总问题开始, 试图把它分解为很多小问题组成的解决方案。再用同样的方法依次攻破每个小问题, 最终问题变得非常小, 以至于可以很容易解决。然后只需把所有的碎片组合起来, 就可以得到一个程序。</p>
+<h2 id="计算生态"><a href="#计算生态" class="headerlink" title="计算生态"></a>计算生态</h2><p>近20年的开源运动产生了深植于各信息技术领域的大量可重用资源, 直接且有力地支撑了信息技术超越其他技术领域的发展速度, 形成了<strong>计算生态</strong>。产业界广泛利用可重用资源快速构建应用已经是主流的产品开发方式。 </p>
+<p>Python语言从诞生之初就致力于开源开放, 建立了全球最大的编程计算生态。</p>
+<p>Python官方网站提供了第三方库索引功能( the Python pack age index,PyPI)</p>
+<p>网址：<a target="_blank" rel="noopener" href="https://pypi.python.org/pypi">https://pypi.python.org/pypi</a></p>
+<p>该页面列出了 Python语言三四十万个第三方库的基本信息, 这些函数库覆盖了信息领域所有技术方向。这里需要说明的是,  Python语言的函数库并非都采用 Python语言编写。由于Python有非常简单灵活的编程方式, 很多采用C、C++等语言编写的专业库可以经过简单的接口封装供 Python语言程序调用。这样的黏性功能使得 Python语言成了各类编程语言之间的接口, Python语言也被称为“胶水语言”。</p>
+<p>Python第三方程序包括库(library)、模块(module)和程序包(package)等多种命名</p>
+<h3 id="Python标准库"><a href="#Python标准库" class="headerlink" title="Python标准库"></a>Python标准库</h3><p>有一部分 Python 计算生态随 Python 安装包一起发布,用户可以随时使用, 被称为 Python标准库。受限于 Python安装包的设定大小, 标准库数量不会很多, 270个左右。</p>
+<h3 id="Python第三方库"><a href="#Python第三方库" class="headerlink" title="Python第三方库"></a>Python第三方库</h3><p>更广泛的 Python 计算生态采用额外安装方式服务用户, 被称为 Python 第三方库。这些第三方库由全球各行业专家、工程师和爱好者开发, 没有顶层设计, 由开发者采用“尽力而为”的方式维护。</p>
+<p>Python通过新一代安装工具pip管理大部分 Python第三方库的安装。</p>
+<h3 id="生态式编程"><a href="#生态式编程" class="headerlink" title="生态式编程"></a>生态式编程</h3><p>生态式编程是一种基于开源软件、开源功能、开源模块等开源计算功能的程序设计方法。当面对计算需求时, 生态式编程充分利用已有开源功能, 以搭积木方式,构建快速原型并不断迭代。</p>
+<p>生态式编程与过程式编程、函数式编程并不矛盾, 这是更高级别代码抽象方式, 体现了更加开阔的编程思维和计算视野。</p>
+<h2 id="基本的Python内置函数"><a href="#基本的Python内置函数" class="headerlink" title="基本的Python内置函数"></a>基本的Python内置函数</h2><p>Python解释器提供了68个内置函数, 这些函数不需要引用库而直接使用。</p>
+<p>这里介绍其中的32个，请掌握。</p>
+<table>
+<thead>
+<tr>
+<th>函数名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>abs(x)</td>
+<td>x的绝对值。如果x是复数, 返回复数的模</td>
+</tr>
+<tr>
+<td>all(x)</td>
+<td>组合类型变量x中所有元素都为真时返回True, 否则返回False;若x为空,返回True</td>
+</tr>
+<tr>
+<td>any(x)</td>
+<td>组合类型变量x中任一元素都为真时返回True, 否则返回False;若x为空,返回False</td>
+</tr>
+<tr>
+<td>bin(x)</td>
+<td>将整数x转换为等值的二进制字符串, 如 bin(1010)的结果是 0b1111110010</td>
+</tr>
+<tr>
+<td>bool(x)</td>
+<td>将x转换为Boolean类型,即True或False。如 bool(‘’)的结果是False</td>
+</tr>
+<tr>
+<td>chr(i)</td>
+<td>返回Unicode为的字符。如 chr(9996)的结果是‘✌’</td>
+</tr>
+<tr>
+<td>complex(r,i)</td>
+<td>创建一个复数r+is 1j,其中 i 可以省略。如 complex(10,10)的结果是10+10j</td>
+</tr>
+<tr>
+<td>dict()</td>
+<td>创建字典类型。如 dict() 的结果是一个空字典11</td>
+</tr>
+<tr>
+<td>divmod(a,b)</td>
+<td>返回a和b的商及余数。如divmod(10,3)的结果是一个(3,1)</td>
+</tr>
+<tr>
+<td>eval(s)</td>
+<td>计算字符串s作为 Python 表达式的值。如eval1+99)的结果是100</td>
+</tr>
+<tr>
+<td>exec(s)</td>
+<td>计算字符串s作为 Python 语句的值。如exec(‘a = 1+999)运行后,变量a的值为1000</td>
+</tr>
+<tr>
+<td>float(x)</td>
+<td>将x转换成浮点数。如float(1010)的结果是 1010.0</td>
+</tr>
+<tr>
+<td>hex(x)</td>
+<td>将整数转换为16进制字符串。如 hex(1010)的结果是 0x3f2</td>
+</tr>
+<tr>
+<td>input(s)</td>
+<td>获取用户输人,其中s是字符串,作为提示信息。s 可选</td>
+</tr>
+<tr>
+<td>int(x)</td>
+<td>将x转换成整数。如int(9.9)的结果是9</td>
+</tr>
+<tr>
+<td>len(x)</td>
+<td>计算变量x的长度。如len(range(10))的结果是10</td>
+</tr>
+<tr>
+<td>list(x)</td>
+<td>创建或将变量x 转换成一个列表类型。如 list({10,9,8})的结果是[8,9,10]</td>
+</tr>
+<tr>
+<td>max(a1,a2,…)</td>
+<td>返回参数的最大值。如max(1,2,3,4,5)的结果是5</td>
+</tr>
+<tr>
+<td>min(a1,a2,…)</td>
+<td>返回参数的最小值。如min(1,2,3,4,)的结果是1</td>
+</tr>
+<tr>
+<td>oct(x)</td>
+<td>将整数x转换成等值的八进制字符串形式。如oct(1010)的结果是 001762</td>
+</tr>
+<tr>
+<td>open( fname,m)</td>
+<td>打开文件,包括文本方式和二进制方式等。其中,m 部分可以省略,默认是以文本可读形式打开</td>
+</tr>
+<tr>
+<td>ord(c)</td>
+<td>返回一个字符的 Unicode编码值。如ord(字’)的结果是23383</td>
+</tr>
+<tr>
+<td>pow(x,y)</td>
+<td>返回x的y次幂。如 pow(2,pow(2,2))的结果是16</td>
+</tr>
+<tr>
+<td>print(x)</td>
+<td>打印变量或字符串x。print()的end 参数用来表示输出的结尾字符</td>
+</tr>
+<tr>
+<td>range(a,b,s)</td>
+<td>从a到b(不含)以s为步长产生一个序列。如 list(range(1,10,3))的结果是[1,4,7]</td>
+</tr>
+<tr>
+<td>reversed(r)</td>
+<td>返回组合类型r的逆序迭代形式。如 for i in reversed([1,2,3])将逆序遍历列表</td>
+</tr>
+<tr>
+<td>round(n)</td>
+<td>四舍五入方式计算n。如 round(10.6)的结果是11</td>
+</tr>
+<tr>
+<td>set(x)</td>
+<td>将组合数据类型x转换成集合类型。如 set([1,1,11])的结果是{1}</td>
+</tr>
+<tr>
+<td>sorted(x)</td>
+<td>对组合数据类型x 进行排序,默认从小到大。如 sorted([1,3,5,2,4])的结果是[1,2,3,4,5]</td>
+</tr>
+<tr>
+<td>str(x)</td>
+<td>将x转换为等值的字符串类型。如 str(0x1010)的结果是 ‘4112’</td>
+</tr>
+<tr>
+<td>sum(x)</td>
+<td>对组合数据类型x计算求和结果。如 sum([1,3524])的结果是15</td>
+</tr>
+<tr>
+<td>type(x)</td>
+<td>返回变量x的数据类型。如type({1:2})的结果是&lt;class dict’&gt;</td>
+</tr>
+</tbody></table>
+<h1 id="Python标准库-1"><a href="#Python标准库-1" class="headerlink" title="Python标准库"></a>Python标准库</h1><h2 id="turtle库"><a href="#turtle库" class="headerlink" title="turtle库"></a>turtle库</h2><p>turtle(海龟)是 Python 重要的标准库之一, 它能够进行基本的图形绘制。 turtle图形绘制的慨念诞生于1969年, 成功应用于 LOGO编程语言。由于 turtle图形绘制概念十分直观且非常流行,  Python接受了这个概念, 形成了 Python的 turtle库,并成为标准库之一。</p>
+<p>turtle库包含100多个功能函数,主要包括<strong>窗体函数、画笔状态函数和画笔运动函数</strong>3类。</p>
+<h3 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h3><p>使用 Import保留字对turtle库的引用有如下3种方式：</p>
+<p>1.<code>import turtle</code>则对 turtle库中函数调用采用 <code>turtle.&lt;函数名&gt;() </code>形式</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> turtle</span><br><span class="line">turtle.circle(<span class="number">200</span>)</span><br></pre></td></tr></table></figure>
+
+<p>2.<code>from turtle import *</code>则对 turtle库中函数调用直接采用 <code>&lt;函数名&gt;()</code> 形式,不再使用turtle.作为前导</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> turtle <span class="keyword">import</span> *</span><br><span class="line">circle(<span class="number">200</span>)</span><br></pre></td></tr></table></figure>
+
+<p>3.<code>import turtle as t</code>则对turtle库中函数调用采用更简洁的 <code>t.&lt;函数名&gt;()</code> 形式,保留字的作用是将 turtle 库给予别名t。此处也可以使用 t 之外的其他别名</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> turtle <span class="keyword">as</span> t</span><br><span class="line">t.circle(<span class="number">200</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="窗体函数"><a href="#窗体函数" class="headerlink" title="窗体函数"></a>窗体函数</h3><p>turtle库的 <code>turtle.setup()</code> 函数与窗体有关</p>
+<p><code>turtle.setup(width, height, startx, starty)</code></p>
+<p><strong>作用：设置主窗体的大小和位置。</strong></p>
+<p><strong>参数:</strong></p>
+<p>width：窗口宽度。如果值是整数, 表示的是像素值；如果值是小数, 表示窗口宽度与屏幕的比例；</p>
+<p>height：窗口高度。如果值是整数, 表示的是像素值；如果值是小数, 表示窗口高度与屏幕的比例；</p>
+<p>startx：窗口左侧与屏幕左侧的像素距离。如果值是None, 窗口位于屏幕水平中央；</p>
+<p>starty：窗口顶部与屏幕顶部的像素距离。如果值是None, 窗口位于屏幕垂直中央；</p>
+<img src="/article/52570c0f/tp.png" class>
+
+<h3 id="画笔状态函数"><a href="#画笔状态函数" class="headerlink" title="画笔状态函数"></a>画笔状态函数</h3><img src="/article/52570c0f/tp2.png" class>
+
+<h4 id="turtle-penup"><a href="#turtle-penup" class="headerlink" title="turtle.penup()"></a><strong>turtle.penup()</strong></h4><p><strong>别名：</strong>turtle.pu() , turtle.up()</p>
+<p><strong>作用：</strong>提起画笔之后, 移动画笔不绘制形状。</p>
+<h4 id="turtle-pendown"><a href="#turtle-pendown" class="headerlink" title="turtle.pendown()"></a><strong>turtle.pendown()</strong></h4><p><strong>别名：</strong> turtle.pd()，turtle.down()</p>
+<p><strong>作用：</strong> 放下画笔之后, 移动画笔将绘制形状</p>
+<h4 id="turtle-pensize-width"><a href="#turtle-pensize-width" class="headerlink" title="turtle.pensize( width)"></a>turtle.pensize( width)</h4><p><strong>别名：</strong> turtle.width()</p>
+<p><strong>作用：</strong>设置画笔宽度, 当无参数输人时返回当前画笔宽度</p>
+<h4 id="turtle-pencolor-colorstring"><a href="#turtle-pencolor-colorstring" class="headerlink" title="turtle.pencolor( colorstring)"></a>turtle.pencolor( colorstring)</h4><p><strong>别名：</strong> turtle.pencolor( (r,g,b))</p>
+<p><strong>作用：</strong>设置画笔颜色，当无参数输入时返回当前画笔颜色。</p>
+<p><strong>注：</strong>colorstring：表示颜色的字符串, 例如:”purple”、”red”、”blue”等。</p>
+<p>(r,g,b):颜色对应的 RCB的0~1数值,例如1,0.65,0。</p>
+<h4 id="turtle-color-colorstring1-colorstring2"><a href="#turtle-color-colorstring1-colorstring2" class="headerlink" title="turtle.color( colorstring1 ,colorstring2)"></a>turtle.color( colorstring1 ,colorstring2)</h4><p><strong>别名：</strong> turtle.color((r1,g1,b1)，(r2,g2,b2))</p>
+<p><strong>作用：</strong>设置画笔和背景颜色, 当无参数输人时返回当前画笔和背景颜色。</p>
+<p><strong>注：</strong>colorstring：表示颜色的字符串, 例如:”purple”、”red”、”blue”等。</p>
+<p>(r,g,b):颜色对应的 RCB的0~1数值,例如1,0.65,0。</p>
+<h4 id="turtle-begin-fill"><a href="#turtle-begin-fill" class="headerlink" title="turtle.begin_fill()"></a>turtle.begin_fill()</h4><p><strong>作用：</strong>设置填充区域色彩。在开始绘制拟填充背景图形前调用</p>
+<h4 id="turtle-end-fill"><a href="#turtle-end-fill" class="headerlink" title="turtle.end_fill()"></a>turtle.end_fill()</h4><p><strong>作用：</strong>turtle.begin_fill()的配对函数。在结束绘制拟填充背景图形后调用。</p>
+<h4 id="turtle-filling"><a href="#turtle-filling" class="headerlink" title="turtle.filling()"></a>turtle.filling()</h4><p><strong>作用：</strong>返回当前图形背景颜色的填充状态, 即如果当前代码在 begin_fill()和end_fill()之间则返回 True,否则返回 False。</p>
+<h4 id="turtle-clear"><a href="#turtle-clear" class="headerlink" title="turtle.clear()"></a>turtle.clear()</h4><p><strong>作用：</strong>清空当前海龟对象绘制的图形, 但不改变其位置和角度</p>
+<h4 id="turtle-reset"><a href="#turtle-reset" class="headerlink" title="turtle.reset()"></a>turtle.reset()</h4><p><strong>作用：</strong>清空当前绘图窗口, 海龟对象绘图位置和角度归为原点</p>
+<h4 id="turtle-screensize-width-height，bgcolor"><a href="#turtle-screensize-width-height，bgcolor" class="headerlink" title="turtle.screensize( width , height，bgcolor)"></a>turtle.screensize( width , height，bgcolor)</h4><p><strong>作用：</strong>设置当前画布窗口的宽度为 width, 高度为 height, 背景颜色为 bgcolor; 如果不给出参数, 则以元组形式返回当前画布窗口的宽度和高度(width，height)。</p>
+<h4 id="turtle-hideturtle"><a href="#turtle-hideturtle" class="headerlink" title="turtle.hideturtle()"></a>turtle.hideturtle()</h4><p><strong>作用：</strong>隐藏画笔的 turtle形状。</p>
+<h4 id="turtle-showturtle"><a href="#turtle-showturtle" class="headerlink" title="turtle.showturtle()"></a>turtle.showturtle()</h4><p><strong>作用：</strong>显示画笔的 turtle形状。</p>
+<h4 id="turtle-isvisible"><a href="#turtle-isvisible" class="headerlink" title="turtle.isvisible()"></a>turtle.isvisible()</h4><p><strong>作用：</strong>如果 turtle 画笔的形状显示,则返回 True,否则返回 False。</p>
+<h4 id="turtle-write-str-font-None"><a href="#turtle-write-str-font-None" class="headerlink" title="turtle.write( str , font= None)"></a>turtle.write( str , font= None)</h4><p><strong>作用：</strong>根据设置的字体 font 形式,将字符串 str 显示在画布上。</p>
+<p><strong>注：</strong>str：拟输出的字符串。<br>font：字体名称、字体尺寸和字体类型 3 个元素构成的元组。该参数可选,省略时以默认参数显示。</p>
+<h3 id="画笔运动函数"><a href="#画笔运动函数" class="headerlink" title="画笔运动函数"></a>画笔运动函数</h3><img src="/article/52570c0f/tp3.png" class>
+
+<h4 id="turtle-forward-distance"><a href="#turtle-forward-distance" class="headerlink" title="turtle.forward( distance)"></a>turtle.forward( distance)</h4><p><strong>别名：</strong>turtle.fd( distance )</p>
+<p><strong>作用：</strong>小海龟向当前行进方向前进 distance 距离。</p>
+<p><strong>注：</strong>distance：行进距离的像素值,当值为负数时, 表示向相反方向前进</p>
+<h4 id="turtle-backward-distance"><a href="#turtle-backward-distance" class="headerlink" title="turtle.backward(distance)"></a>turtle.backward(distance)</h4><p><strong>别名：</strong>turtle.bk( distance)</p>
+<p><strong>作用：</strong>向小海龟当前行进的反方向运动 distance 距离,画笔方向不变。</p>
+<p><strong>注：</strong>distance：行进距离的像素值。当值为负数时, 表示向前进方向运动</p>
+<h4 id="turtle-right-angle"><a href="#turtle-right-angle" class="headerlink" title="turtle.right(angle)"></a>turtle.right(angle)</h4><p><strong>作用：</strong>改变画笔行进方向为当前方向右侧 angle 度。angle 是角度相对值。</p>
+<h4 id="turtle-left-angle"><a href="#turtle-left-angle" class="headerlink" title="turtle.left(angle)"></a>turtle.left(angle)</h4><p><strong>作用：</strong>改变画笔行进方向为当前方向左侧 angle 度。angle 是角度相对值</p>
+<h4 id="turtle-goto-x-y"><a href="#turtle-goto-x-y" class="headerlink" title="turtle.goto(x,y)"></a>turtle.goto(x,y)</h4><p><strong>作用：</strong>移动画笔到画布中的特定位置, 该位置以坐标(x,y)方式表达。如果当前画笔处于落下状态, 则绘制当前位置到目标位置的线条。</p>
+<h4 id="turtle-setx-x"><a href="#turtle-setx-x" class="headerlink" title="turtle.setx(x)"></a>turtle.setx(x)</h4><p><strong>作用：</strong>修改画笔的横坐标到x, 纵坐标不变</p>
+<h4 id="turtle-sety-y"><a href="#turtle-sety-y" class="headerlink" title="turtle.sety(y)"></a>turtle.sety(y)</h4><p><strong>作用：</strong>修改画笔的纵坐标到 y, 横坐标不变</p>
+<h4 id="turtle-setheading-to-angle"><a href="#turtle-setheading-to-angle" class="headerlink" title="turtle.setheading(to_angle)"></a>turtle.setheading(to_angle)</h4><p><strong>别名：</strong>turtle.seth(to_angle)</p>
+<p><strong>作用：</strong>设置小海龟当前行进方向为 to_angle, 该角度是绝对方向角度值</p>
+<img src="/article/52570c0f/tp4.png" class>
+
+<h4 id="turtle-home"><a href="#turtle-home" class="headerlink" title="turtle.home()"></a>turtle.home()</h4><p><strong>作用：</strong>移动画笔到坐标系原点,画笔方向为初始方向。</p>
+<h4 id="turtle-circle-radius-extent-None"><a href="#turtle-circle-radius-extent-None" class="headerlink" title="turtle.circle(radius ,extent= None)"></a>turtle.circle(radius ,extent= None)</h4><p><strong>作用：</strong>根据半径radius绘制extent角度的弧形</p>
+<p><strong>注：</strong>radius：弧形半径。当值为正数时, 半径在小海龟左侧; 当值为负数时, 半径在小海龟右侧;</p>
+<p>extent：绘制弧形的角度。当不给该参数或参数为 None 时, 绘制整个圆形</p>
+<h4 id="turtle-dot-size-color"><a href="#turtle-dot-size-color" class="headerlink" title="turtle.dot( size . color )"></a>turtle.dot( size . color )</h4><p><strong>作用：</strong>绘制一个带有背景色color、直径为 size 的圆点</p>
+<h4 id="turtle-undo"><a href="#turtle-undo" class="headerlink" title="turtle.undo()"></a>turtle.undo()</h4><p><strong>作用：</strong>撤销绘图的最后一次动作。</p>
+<h4 id="turtle-speed-s"><a href="#turtle-speed-s" class="headerlink" title="turtle.speed(s)"></a>turtle.speed(s)</h4><p><strong>作用：</strong>设置画笔的绘制速度, 参数为0<del>10 整数, 0表示没有绘制动作, 1</del>10 逐步增加绘制速度, 超过10则等同于参数为零。</p>
+<h1 id="Python实例"><a href="#Python实例" class="headerlink" title="Python实例"></a>Python实例</h1><p>编写一个程序, 绘制三角形、四边形、五边形、六边形和圆形。通过调用 turtle的 begin_fill()和end_fill()方法将绘制的图形填充上颜色。通过调用 write()函数输出一行文字,字体为 Times字号为18,粗体。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> turtle <span class="keyword">import</span> *</span><br><span class="line">speed(<span class="number">1</span>)</span><br><span class="line">pensize(<span class="number">2</span>)</span><br><span class="line"><span class="comment">#画三角形</span></span><br><span class="line">up()</span><br><span class="line">goto(-<span class="number">200</span>,-<span class="number">50</span>)</span><br><span class="line">pd()</span><br><span class="line">begin_fill()</span><br><span class="line">color(<span class="string">&#x27;red&#x27;</span>)</span><br><span class="line">circle(<span class="number">40</span>,steps=<span class="number">3</span>)</span><br><span class="line">end_fill()</span><br><span class="line"><span class="comment">#画四边形</span></span><br><span class="line">up()</span><br><span class="line">goto(-<span class="number">100</span>,-<span class="number">50</span>)</span><br><span class="line">pd()</span><br><span class="line">begin_fill()</span><br><span class="line">color(<span class="string">&#x27;blue&#x27;</span>)</span><br><span class="line">circle(<span class="number">40</span>,steps=<span class="number">4</span>)</span><br><span class="line">end_fill()</span><br><span class="line"><span class="comment">#画五边形</span></span><br><span class="line">up()</span><br><span class="line">goto(<span class="number">0</span>,-<span class="number">50</span>)</span><br><span class="line">pd()</span><br><span class="line">begin_fill()</span><br><span class="line">color(<span class="string">&#x27;green&#x27;</span>)</span><br><span class="line">circle(<span class="number">40</span>,steps=<span class="number">5</span>)</span><br><span class="line">end_fill()</span><br><span class="line"><span class="comment">#画六边形</span></span><br><span class="line">up()</span><br><span class="line">goto(<span class="number">100</span>,-<span class="number">50</span>)</span><br><span class="line">pd()</span><br><span class="line">begin_fill()</span><br><span class="line">color(<span class="string">&#x27;yellow&#x27;</span>)</span><br><span class="line">circle(<span class="number">40</span>,steps=<span class="number">6</span>)</span><br><span class="line">end_fill()</span><br><span class="line"><span class="comment">#画圆形</span></span><br><span class="line">up()</span><br><span class="line">goto(<span class="number">200</span>,-<span class="number">50</span>)</span><br><span class="line">pd()</span><br><span class="line">begin_fill()</span><br><span class="line">color(<span class="string">&#x27;orange&#x27;</span>)</span><br><span class="line">circle(<span class="number">40</span>)</span><br><span class="line">end_fill()</span><br><span class="line"><span class="comment">#写字</span></span><br><span class="line">up()</span><br><span class="line">goto(-<span class="number">100</span>,<span class="number">50</span>)</span><br><span class="line">color(<span class="string">&#x27;purple&#x27;</span>)</span><br><span class="line">pd()</span><br><span class="line">write(<span class="string">&quot;Hello World!!!&quot;</span>,font=(<span class="string">&quot;Times&quot;</span>,<span class="number">18</span>,<span class="string">&quot;bold&quot;</span>))</span><br><span class="line">hideturtle()</span><br><span class="line">done()</span><br></pre></td></tr></table></figure>
+
+<p><strong>代码演示：</strong></p>
+<img src="/article/52570c0f/gif.gif" class></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://jmoh0618.github.io">JMoh</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://jmoh0618.github.io/article/52570c0f.html">http://jmoh0618.github.io/article/52570c0f.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://jmoh0618.github.io" target="_blank">JMblog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Python/">Python</a></div><div class="post_share"><div class="social-share" data-image="https://jmoh.oss-cn-hangzhou.aliyuncs.com/bg/bg34.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/wechat.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/alipay.jpg" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/article/a53c244c.html"><img class="next-cover" src="https://jmoh.oss-cn-hangzhou.aliyuncs.com/bg/bg33.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Python程序设计基础（七）</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/article/b7898ba2.html" title="Python程序设计基础（一）"><img class="cover" src="https://jmoh.oss-cn-hangzhou.aliyuncs.com/bg/bg27.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-01-23</div><div class="title">Python程序设计基础（一）</div></div></a></div><div><a href="/article/a53c244c.html" title="Python程序设计基础（七）"><img class="cover" src="https://jmoh.oss-cn-hangzhou.aliyuncs.com/bg/bg33.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-01-31</div><div class="title">Python程序设计基础（七）</div></div></a></div><div><a href="/article/879f677a.html" title="Python程序设计基础（二）"><img class="cover" src="https://jmoh.oss-cn-hangzhou.aliyuncs.com/bg/bg28.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-01-23</div><div class="title">Python程序设计基础（二）</div></div></a></div><div><a href="/article/ca81c428.html" title="Python程序设计基础（三）"><img class="cover" src="https://jmoh.oss-cn-hangzhou.aliyuncs.com/bg/bg29.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-01-25</div><div class="title">Python程序设计基础（三）</div></div></a></div><div><a href="/article/1232180a.html" title="Python程序设计基础（五）"><img class="cover" src="https://jmoh.oss-cn-hangzhou.aliyuncs.com/bg/bg31.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-01-27</div><div class="title">Python程序设计基础（五）</div></div></a></div><div><a href="/article/773c53d3.html" title="Python程序设计基础（六）"><img class="cover" src="https://jmoh.oss-cn-hangzhou.aliyuncs.com/bg/bg32.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-01-29</div><div class="title">Python程序设计基础（六）</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://jmoh.oss-cn-hangzhou.aliyuncs.com/bg/tx.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">JMoh</div><div class="author-info__description">分享技术，记录生活</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">34</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div><div class="card-info-social-icons is-center"><a class="social-icon" href="https://qm.qq.com/cgi-bin/qm/qr?k=F8Roaf7kUggAM9AhK9oIn4ouuXu4ECkQ&amp;noverify=0" target="_blank" title="QQ"><i class="fa-brands fa-qq"></i></a><a class="social-icon" href="https://github.com/JMoh0618" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="https://space.bilibili.com/424716389" target="_blank" title="bilibili"><i class="fa-brands fa-bilibili"></i></a><a class="social-icon" href="mailto:1611894251@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">如果在阅读过程中遇到了问题，请及时评论或者留言，看到了会在第一时间给出回复。（评论功能暂不可用！！！）</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Python%E8%AE%A1%E7%AE%97%E7%94%9F%E6%80%81"><span class="toc-number">1.</span> <span class="toc-text">Python计算生态</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%80%9D%E7%BB%B4"><span class="toc-number">1.1.</span> <span class="toc-text">计算思维</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E6%96%B9%E6%B3%95%E8%AE%BA"><span class="toc-number">1.2.</span> <span class="toc-text">程序设计方法论</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E7%94%9F%E6%80%81"><span class="toc-number">1.3.</span> <span class="toc-text">计算生态</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Python%E6%A0%87%E5%87%86%E5%BA%93"><span class="toc-number">1.3.1.</span> <span class="toc-text">Python标准库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Python%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93"><span class="toc-number">1.3.2.</span> <span class="toc-text">Python第三方库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%9F%E6%80%81%E5%BC%8F%E7%BC%96%E7%A8%8B"><span class="toc-number">1.3.3.</span> <span class="toc-text">生态式编程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E7%9A%84Python%E5%86%85%E7%BD%AE%E5%87%BD%E6%95%B0"><span class="toc-number">1.4.</span> <span class="toc-text">基本的Python内置函数</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Python%E6%A0%87%E5%87%86%E5%BA%93-1"><span class="toc-number">2.</span> <span class="toc-text">Python标准库</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#turtle%E5%BA%93"><span class="toc-number">2.1.</span> <span class="toc-text">turtle库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%95%E7%94%A8"><span class="toc-number">2.1.1.</span> <span class="toc-text">引用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AA%97%E4%BD%93%E5%87%BD%E6%95%B0"><span class="toc-number">2.1.2.</span> <span class="toc-text">窗体函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%BB%E7%AC%94%E7%8A%B6%E6%80%81%E5%87%BD%E6%95%B0"><span class="toc-number">2.1.3.</span> <span class="toc-text">画笔状态函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#turtle-penup"><span class="toc-number">2.1.3.1.</span> <span class="toc-text">turtle.penup()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#turtle-pendown"><span class="toc-number">2.1.3.2.</span> <span class="toc-text">turtle.pendown()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#turtle-pensize-width"><span class="toc-number">2.1.3.3.</span> <span class="toc-text">turtle.pensize( width)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#turtle-pencolor-colorstring"><span class="toc-number">2.1.3.4.</span> <span class="toc-text">turtle.pencolor( colorstring)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#turtle-color-colorstring1-colorstring2"><span class="toc-number">2.1.3.5.</span> <span class="toc-text">turtle.color( colorstring1 ,colorstring2)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#turtle-begin-fill"><span class="toc-number">2.1.3.6.</span> <span class="toc-text">turtle.begin_fill()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#turtle-end-fill"><span class="toc-number">2.1.3.7.</span> <span class="toc-text">turtle.end_fill()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#turtle-filling"><span class="toc-number">2.1.3.8.</span> <span class="toc-text">turtle.filling()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#turtle-clear"><span class="toc-number">2.1.3.9.</span> <span class="toc-text">turtle.clear()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#turtle-reset"><span class="toc-number">2.1.3.10.</span> <span class="toc-text">turtle.reset()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#turtle-screensize-width-height%EF%BC%8Cbgcolor"><span class="toc-number">2.1.3.11.</span> <span class="toc-text">turtle.screensize( width , height，bgcolor)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#turtle-hideturtle"><span class="toc-number">2.1.3.12.</span> <span class="toc-text">turtle.hideturtle()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#turtle-showturtle"><span class="toc-number">2.1.3.13.</span> <span class="toc-text">turtle.showturtle()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#turtle-isvisible"><span class="toc-number">2.1.3.14.</span> <span class="toc-text">turtle.isvisible()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#turtle-write-str-font-None"><span class="toc-number">2.1.3.15.</span> <span class="toc-text">turtle.write( str , font&#x3D; None)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%BB%E7%AC%94%E8%BF%90%E5%8A%A8%E5%87%BD%E6%95%B0"><span class="toc-number">2.1.4.</span> <span class="toc-text">画笔运动函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#turtle-forward-distance"><span class="toc-number">2.1.4.1.</span> <span class="toc-text">turtle.forward( distance)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#turtle-backward-distance"><span class="toc-number">2.1.4.2.</span> <span class="toc-text">turtle.backward(distance)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#turtle-right-angle"><span class="toc-number">2.1.4.3.</span> <span class="toc-text">turtle.right(angle)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#turtle-left-angle"><span class="toc-number">2.1.4.4.</span> <span class="toc-text">turtle.left(angle)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#turtle-goto-x-y"><span class="toc-number">2.1.4.5.</span> <span class="toc-text">turtle.goto(x,y)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#turtle-setx-x"><span class="toc-number">2.1.4.6.</span> <span class="toc-text">turtle.setx(x)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#turtle-sety-y"><span class="toc-number">2.1.4.7.</span> <span class="toc-text">turtle.sety(y)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#turtle-setheading-to-angle"><span class="toc-number">2.1.4.8.</span> <span class="toc-text">turtle.setheading(to_angle)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#turtle-home"><span class="toc-number">2.1.4.9.</span> <span class="toc-text">turtle.home()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#turtle-circle-radius-extent-None"><span class="toc-number">2.1.4.10.</span> <span class="toc-text">turtle.circle(radius ,extent&#x3D; None)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#turtle-dot-size-color"><span class="toc-number">2.1.4.11.</span> <span class="toc-text">turtle.dot( size . color )</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#turtle-undo"><span class="toc-number">2.1.4.12.</span> <span class="toc-text">turtle.undo()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#turtle-speed-s"><span class="toc-number">2.1.4.13.</span> <span class="toc-text">turtle.speed(s)</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Python%E5%AE%9E%E4%BE%8B"><span class="toc-number">3.</span> <span class="toc-text">Python实例</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/article/52570c0f.html" title="Python程序设计基础（八）"><img src="https://jmoh.oss-cn-hangzhou.aliyuncs.com/bg/bg34.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Python程序设计基础（八）"/></a><div class="content"><a class="title" href="/article/52570c0f.html" title="Python程序设计基础（八）">Python程序设计基础（八）</a><time datetime="2023-02-02T05:21:49.000Z" title="发表于 2023-02-02 13:21:49">2023-02-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/article/a53c244c.html" title="Python程序设计基础（七）"><img src="https://jmoh.oss-cn-hangzhou.aliyuncs.com/bg/bg33.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Python程序设计基础（七）"/></a><div class="content"><a class="title" href="/article/a53c244c.html" title="Python程序设计基础（七）">Python程序设计基础（七）</a><time datetime="2023-01-31T08:13:35.000Z" title="发表于 2023-01-31 16:13:35">2023-01-31</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/article/773c53d3.html" title="Python程序设计基础（六）"><img src="https://jmoh.oss-cn-hangzhou.aliyuncs.com/bg/bg32.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Python程序设计基础（六）"/></a><div class="content"><a class="title" href="/article/773c53d3.html" title="Python程序设计基础（六）">Python程序设计基础（六）</a><time datetime="2023-01-29T06:11:29.000Z" title="发表于 2023-01-29 14:11:29">2023-01-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/article/1232180a.html" title="Python程序设计基础（五）"><img src="https://jmoh.oss-cn-hangzhou.aliyuncs.com/bg/bg31.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Python程序设计基础（五）"/></a><div class="content"><a class="title" href="/article/1232180a.html" title="Python程序设计基础（五）">Python程序设计基础（五）</a><time datetime="2023-01-27T08:46:58.000Z" title="发表于 2023-01-27 16:46:58">2023-01-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/article/7dacdd4d.html" title="Python程序设计基础（四）"><img src="https://jmoh.oss-cn-hangzhou.aliyuncs.com/bg/bg30.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Python程序设计基础（四）"/></a><div class="content"><a class="title" href="/article/7dacdd4d.html" title="Python程序设计基础（四）">Python程序设计基础（四）</a><time datetime="2023-01-26T08:09:01.000Z" title="发表于 2023-01-26 16:09:01">2023-01-26</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://jmoh.oss-cn-hangzhou.aliyuncs.com/bg/bg34.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2022 - 2023 By JMoh</div><div class="footer_custom_text">©版权说明：本网站所有内容均收集于互联网或自己创作,<br>方便于网友与自己学习交流，如有侵权，请留言，立即处理<br><a target="_blank" rel="noopener" href="https://beian.miit.gov.cn/"><span>备案号：闽ICP备2022004653号-1</span></a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">簡</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: '7CxuOccIsYPIliTamTHj1swN-gzGzoHsz',
+      appKey: 'ks5hUH5M6neA18doLX1bHrye',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/gh/HCLonely/Valine@latest/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-ribbon.min.js" size="300" alpha="0.6" zIndex="-1" mobile="false" data-click="false"></script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-show-text.min.js" data-mobile="false" data-text="I,LOVE,YOU" data-fontsize="15px" data-random="false" async="async"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
