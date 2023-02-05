@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>【信息技术基础】信息安全</title>
+      <link href="/article/43874dae.html"/>
+      <url>/article/43874dae.html</url>
+      
+        <content type="html"><![CDATA[<p>信息安全一般是指信息产生、制作、传播、收集、处理直到选取等信息传播与使用全过程中的信息资源安全。</p><p>保护信息网络中的硬件、软件及其系统中的数据,使之不受偶然的或者恶意的攻击而遭到破坏、更改和泄露,保证系统可靠、不间断地正常运行,信息服务不中断。</p><p>信息安全的基本内涵最早由信息技术安全评估标准( Information Technolcurity Evaluation Criteria,ITSEC,即业界通常指称的“橘皮书”)定义。</p><p><strong>ITSEC阐述和强调了信息安全的CIA三元组目标, 即保密性( Confidentiality)、完整性( Integrity)和可用性( Availability)。</strong></p><h1 id="要素"><a href="#要素" class="headerlink" title="要素"></a>要素</h1><ul><li>身份认证</li><li>访问控制</li><li>数据保密</li><li>数据完整</li><li>不可否认</li></ul><h1 id="信息安全面临的常见威胁"><a href="#信息安全面临的常见威胁" class="headerlink" title="信息安全面临的常见威胁"></a>信息安全面临的常见威胁</h1><ul><li>计算机病毒</li><li>网络黑客</li><li>网络犯罪</li><li>预置陷阱</li><li>垃圾信息</li><li>隐私泄露</li></ul><h1 id="常用的安全防御技术"><a href="#常用的安全防御技术" class="headerlink" title="常用的安全防御技术"></a>常用的安全防御技术</h1><ul><li>加密技术</li><li>防火墙</li><li>入侵检测</li><li>系统容灾</li></ul><h1 id="安全防御的方法"><a href="#安全防御的方法" class="headerlink" title="安全防御的方法"></a>安全防御的方法</h1><ol><li>建立良好的安全习惯</li><li>关闭或删除系统中不需要的服务</li><li>经常升级安全补丁</li><li>使用复杂的密码</li><li>迅速隔离受感染的计算机</li><li>了解病毒知识</li><li>安装专业的杀毒软件进行全面监控</li><li>设置个人防火墙进行防护</li></ol><h1 id="常用的网络安全设备功能"><a href="#常用的网络安全设备功能" class="headerlink" title="常用的网络安全设备功能"></a>常用的网络安全设备功能</h1><p><strong>防火墙：</strong>网络地址映射(内网服务器的私有地址映射成公网 IP，隐藏内部网络的结构)，访问控制功能</p><p><strong>入侵防御系统（IPS）：</strong>IPS 可提供有效的、防火墙无法提供的应用层安全防护功能。但为了避免误报，IPS 对未知攻击的防御能力几乎没有。</p><p><strong>防毒墙：</strong>过滤垃圾邮件、病毒、蠕虫，可以针对重点网段进行深度保护。一般部署在防火墙和服务器之间。</p><p><strong>web引用防火墙：</strong>是专门针对企业网站进行安全防护的产品。能够针对 Web 应用供给提供更全面更精准的防护，尤其对一些可以绕过传统防火墙和 IPS 的攻击方法，可以更精准地阻断。</p><p><strong>网闸：</strong>物理层面的网络安全距离、放置已知与未知的木马程序、通过添加功能模块可以实现。</p><p><strong>上网行为管理：</strong>一般部署在网络的出口。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 信息技术基础 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 信息技术基础 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Python程序设计基础（八）</title>
       <link href="/article/52570c0f.html"/>
       <url>/article/52570c0f.html</url>
